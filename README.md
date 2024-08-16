@@ -28,14 +28,14 @@ SELECT pe.product_name
 		,ig.industry_group
 		,max(pe.carbon_footprint_pcf) as max_carbon_emission
 FROM product_emissions pe 
-JOIN industry_groups ig ON ig.id = pe.company_id 
+LEFT JOIN industry_groups ig ON ig.id = pe.company_id 
 GROUP BY product_name
 ORDER BY max_carbon_emission desc
 LIMIT 10;
 ```
 ## Result
-![image](https://github.com/user-attachments/assets/92fdb58b-5c62-496d-a9b9-e9bb138c6fc8)
-=> 10 sản phẩm này là Commercial & Professional Services, Consumer Durables & Apparel, Gas Utilities, Automobiles & Components, Food & Beverage Processing, Containers & Packaging
+![image](https://github.com/user-attachments/assets/93849d17-b3cd-4554-a819-47f81e445808)
+=> Các sản phẩm này là Commercial & Professional Services, Consumer Durables & Apparel, Gas Utilities
 
 # 3. What are the industries with the highest contribution to carbon emissions?
 ## Code
@@ -43,13 +43,13 @@ LIMIT 10;
 SELECT ig.industry_group
 		,sum(pe.carbon_footprint_pcf) as sum_carbon_emission
 FROM product_emissions pe 
-JOIN industry_groups ig ON ig.id = pe.company_id
+LEFT JOIN industry_groups ig ON ig.id = pe.company_id
 GROUP BY industry_group
 ORDER BY sum_carbon_emission desc
 LIMIT 5;
 ```
 ## Result
-![image](https://github.com/user-attachments/assets/f6114c7a-02fa-4207-8929-3fec21d0c74a)
+![image](https://github.com/user-attachments/assets/63472173-901e-4e5b-9ca3-cb5a5c2c639f)
 => Industry_group:  Commercial & Professional Services với tổng lượng carbon thải ra lớn nhất
 
 # 4. What are the companies with the highest contribution to carbon emissions?
@@ -58,7 +58,7 @@ LIMIT 5;
 SELECT companies.company_name
 		,sum(pe.carbon_footprint_pcf) as sum_carbon_emission
 FROM product_emissions pe 
-JOIN companies ON companies.id = pe.company_id
+LEFT JOIN companies ON companies.id = pe.company_id
 GROUP BY company_name
 ORDER BY sum_carbon_emission desc
 LIMIT 5;
@@ -73,7 +73,7 @@ LIMIT 5;
 SELECT countries.country_name
 		,sum(pe.carbon_footprint_pcf) as sum_carbon_emission
 FROM product_emissions pe 
-JOIN countries ON countries.id = pe.country_id
+LEFT JOIN countries ON countries.id = pe.country_id
 GROUP BY country_name
 ORDER BY sum_carbon_emission desc
 LIMIT 5;
@@ -83,7 +83,7 @@ LIMIT 5;
 => Country: Spain với tổng lượng carbon thải ra lớn nhất
 
 # 6. What is the trend of carbon footprints (PCFs) over the years?
-## Code1 : So sánh theo lượng khí thải carbon trung bình
+## Code : Đánh giá theo lượng khí thải carbon trung bình
 ```
 SELECT year
 		,round(avg(carbon_footprint_pcf),2) as average_pcf_year
@@ -91,12 +91,18 @@ FROM product_emissions
 group by year
 order by year
 ```
-## Result1
+## Result
 ![image](https://github.com/user-attachments/assets/0899040c-b82b-4a24-bd2e-3194239d9af4)
-=> Năm 2014 lượng carbon trung bình có tăng nhẹ so 2013 nhưng qua 2015 tăng 1 cách đột biến ( hơn 15 lần ) , sau đó giảm mạnh tới 2016 ( giảm 6 lần ) và giảm nhẹ về 2017
+=> Năm 2014 lượng carbon trung bình có tăng nhẹ so 2013 nhưng qua 2015 tăng 1 cách đột biến ( hơn 15 lần ) , sau đó giảm mạnh tới 2016 ( giảm 6 lần ) và giảm nhẹ về 2017.
 
-
-
+# 7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+## Code
+SELECT pe.year
+		,round(avg(carbon_footprint_pcf),2) as average_pcf_year
+		,industry_groups.industry_group
+FROM product_emissions pe 
+LEFT JOIN industry_groups ON industry_groups.id = pe.industry_group_id
+GROUP BY year
 
 
 
