@@ -1,4 +1,4 @@
-# Truy xuất để kiểm tra dữ liệu như thế nào. limit 10
+# Kiểm tra dữ liệu bảng product_emissiobs với 10 dòng
 ```
 SELECT *
 from product_emissions
