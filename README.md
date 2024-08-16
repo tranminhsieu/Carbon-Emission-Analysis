@@ -82,5 +82,32 @@ LIMIT 5;
 ![image](https://github.com/user-attachments/assets/8d15a063-441f-489e-8158-c07573972daf)
 => Country: Spain với tổng lượng carbon thải ra lớn nhất
 
+# 6. What is the trend of carbon footprints (PCFs) over the years?
+## Code1 : So sánh theo lượng khí thải carbon trung bình
+```
+SELECT year
+		,round(avg(carbon_footprint_pcf),2) as average_pcf_year
+FROM product_emissions 
+group by year
+order by year
+```
+## Result1
+![image](https://github.com/user-attachments/assets/0899040c-b82b-4a24-bd2e-3194239d9af4)
+=> Năm 2014 lượng carbon trung bình có tăng nhẹ so 2013 nhưng qua 2015 tăng 1 cách đột biến ( hơn 15 lần ) , sau đó giảm mạnh tới 2016 ( giảm 6 lần ) và giảm nhẹ về 2017
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
