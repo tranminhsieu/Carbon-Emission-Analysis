@@ -50,7 +50,37 @@ LIMIT 5;
 ```
 ## Result
 ![image](https://github.com/user-attachments/assets/f6114c7a-02fa-4207-8929-3fec21d0c74a)
-=> Industry_group:  Commercial & Professional Services với lượng carbon thải ra lớn nhất
+=> Industry_group:  Commercial & Professional Services với tổng lượng carbon thải ra lớn nhất
+
+# 4. What are the companies with the highest contribution to carbon emissions?
+## Code
+```
+SELECT companies.company_name
+		,sum(pe.carbon_footprint_pcf) as sum_carbon_emission
+FROM product_emissions pe 
+JOIN companies ON companies.id = pe.company_id
+GROUP BY company_name
+ORDER BY sum_carbon_emission desc
+LIMIT 5;
+```
+## Result
+![image](https://github.com/user-attachments/assets/6117506e-4e60-426d-b08a-9dfd4e30c9bb)
+=> Company: Gamesa Corporación Tecnológica, S.A với tổng lượng carbon thải ra lớn nhất
+
+# 5. What are the countries with the highest contribution to carbon emissions?
+## Code
+```
+SELECT countries.country_name
+		,sum(pe.carbon_footprint_pcf) as sum_carbon_emission
+FROM product_emissions pe 
+JOIN countries ON countries.id = pe.country_id
+GROUP BY country_name
+ORDER BY sum_carbon_emission desc
+LIMIT 5;
+```
+## Result
+![image](https://github.com/user-attachments/assets/8d15a063-441f-489e-8158-c07573972daf)
+=> Country: Spain với tổng lượng carbon thải ra lớn nhất
 
 
 
