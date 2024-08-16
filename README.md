@@ -102,7 +102,22 @@ SELECT pe.year
 		,industry_groups.industry_group
 FROM product_emissions pe 
 LEFT JOIN industry_groups ON industry_groups.id = pe.industry_group_id
-GROUP BY year
+GROUP BY year, industry_group
+ORDER BY industry_group, year
+## Result
+![image](https://github.com/user-attachments/assets/b18f1719-873c-4d4f-b6c5-05074a9d8a0a)
+![image](https://github.com/user-attachments/assets/b0d58160-2f25-4910-805b-eea64bfdba37)
+![image](https://github.com/user-attachments/assets/63f3cbf3-a6ac-48e8-ad3b-3d5431073e73)
+### 
++ Đối với ngành "Food, Beverage & Tobacco" : 2013-2014: biến động nhẹ. Tới 2015 mức 0 , tới 2016 tăng mạnh mẽ gấp ~40 lần 2014, nhưng đến 2017 giảm mạnh
++ Đối với ngành "Pharmaceuticals, Biotechnology & Life Sciences" chỉ ghi nhận năm 2014 tăng cao so 2013.
++ Đối với ngành	Automobiles & Components ghi nhận lượng thải carbon giảm nhẹ từ 2013- 2014 và tới 2017 thì tăng nhẹ qua các năm.
++ Đối với ngành	Capital Goods ghi nhận tăng cao 2013-2014 nhưng đến 2017 thì giảm mạnh qua các năm.
++ Đối với ngành Commercial & Professional Services 2013-2016 thì lượng thải đều qua các năm nhưng tăng cao đến 2017
++ Đối với ngành Consumer Durables & Apparel ghi nhận giảm mạnh qua các năm
++ Ngành Energy thì ghi nhận 2016 tăng mạnh so 2013 ( ~ 4 lần )
++ Ngành Food & Staples Retailing 2014-2015 ko ghi nhận thay đổi nhiều nhưng đến 2016 thì gần như chạm mức rất thấp
+
 
 
 
