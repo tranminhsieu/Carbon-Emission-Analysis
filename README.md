@@ -37,5 +37,7 @@ LIMIT 10;
 ![image](https://github.com/user-attachments/assets/92fdb58b-5c62-496d-a9b9-e9bb138c6fc8)
 => 10 sản phẩm này là Commercial & Professional Services, Consumer Durables & Apparel, Gas Utilities, Automobiles & Components, Food & Beverage Processing, Containers & Packaging
 
+# 3. What are the industries with the highest contribution to carbon emissions?
+
 
 
