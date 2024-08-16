@@ -97,6 +97,7 @@ order by year
 
 # 7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 ## Code
+```
 SELECT pe.year
 		,round(avg(carbon_footprint_pcf),2) as average_pcf_year
 		,industry_groups.industry_group
@@ -104,6 +105,7 @@ FROM product_emissions pe
 LEFT JOIN industry_groups ON industry_groups.id = pe.industry_group_id
 GROUP BY year, industry_group
 ORDER BY industry_group, year
+```
 ## Result
 ![image](https://github.com/user-attachments/assets/b18f1719-873c-4d4f-b6c5-05074a9d8a0a)
 ![image](https://github.com/user-attachments/assets/b0d58160-2f25-4910-805b-eea64bfdba37)
